@@ -1,4 +1,4 @@
-package test.task.sberData.model;
+package test.task.sberData.entities;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -48,12 +48,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
+    public String getUsername() {
         return username;
     }
 
-    public void setName(String name) {
-        this.username = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -86,13 +86,14 @@ public class User {
         if (!(o instanceof User)) return false;
         User user = (User) o;
         return Objects.equals(getId(), user.getId()) &&
-                Objects.equals(getName(), user.getName()) &&
+                Objects.equals(getUsername(), user.getUsername()) &&
+                Objects.equals(getPassword(), user.getPassword()) &&
                 Objects.equals(getEmail(), user.getEmail()) &&
                 Objects.equals(getRoles(), user.getRoles());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getEmail(), getRoles());
+        return Objects.hash(getId(), getUsername(), getPassword(), getEmail(), getRoles());
     }
 }

@@ -1,4 +1,4 @@
-package test.task.sberData.model;
+package test.task.sberData.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
