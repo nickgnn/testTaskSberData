@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Страница входа</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        body {
+            background: #eeeeee;
+        }
+
+        .login-form {
+            /*margin-top: 100px;*/
+            margin-top: 12px;
+        }
+
+        .login-group :last-child {
+            margin-top: 5px;
+        }
+
+        .empty-block {
+            height: 88px;
+        }
+    </style>
+
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-xs-11 col-md-offset-3 col-xs-offset-2 login-form text-center">
+            <div class="col-xs-8 col-md-offset-2">
+
+                <div class="empty-block" th:if="${isNotValid == null and logout == null}"></div>
+
+
+                <div class="alert alert-danger" th:if="${isNotValid}">
+                    <h3>Неверная пара логин/пароль!</h3>
+                    <div id="error-message"></div>
+                </div>
+
+
+                <div class="alert alert-success" th:if="${logout}">
+                    <h3>Выход из системы прошёл успешно.</h3>
+                    <div id=""></div>
+                </div>
+
+                <div id="logout-message" class="alert alert-success hidden">
+                    <h3>Успешно!</h3>
+                    <div id="success-message">Вы успешно вышли из системы.</div>
+                </div>
+
+
+                <h2>Пожалуйста войдите в систему</h2>
+                <form action="/login" method="POST" >
+                    <div class="form-group login-group">
+                        <input type="text" class="form-control" id="uName" name="login" placeholder="Email address"
+                               required="" th:value="user"/>
+                        <input type="password" class="form-control" id="uPass" name="password"
+                               required="" th:value="user" placeholder="Password"/>
+                    </div>
+
+                    <input type="submit" class="btn btn-primary btn-block btn-pull-center" value="Вход"/>
+                </form>
+
+                <div class="form-group">
+                    <span>Новый пользователь? <a href="/registration/first">Зарегестрируйтесь здесь</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form style="margin-left: 500px;margin-right: 500px;margin-top: 15px" id="google" th:action="@{/googleAuth}"
+      method="GET">
+    <button type="submit" class="btn btn-primary btn-block btn-pull-center">
+        Авторизация Google
+    </button>
+</form>
+<form id="vkontakte" method="GET" style="margin-left: 500px;margin-right: 500px;margin-top: 15px"
+      th:action="@{/vkAuth}">
+    <button class="btn btn-primary btn-block btn-pull-center" type="submit">
+        Авторизация Вконтакте
+    </button>
+</form>
+
+</body>
+</html>
