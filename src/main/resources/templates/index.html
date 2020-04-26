@@ -70,25 +70,12 @@
                 </form>
 
                 <div class="form-group">
-                    <span>Новый пользователь? <a href="/registration/first">Зарегестрируйтесь здесь</a></span>
+                    <span>Новый пользователь? <a href="/registration/first">Регистрация</a></span>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<form style="margin-left: 500px;margin-right: 500px;margin-top: 15px" id="google" th:action="@{/googleAuth}"
-      method="GET">
-    <button type="submit" class="btn btn-primary btn-block btn-pull-center">
-        Авторизация Google
-    </button>
-</form>
-<form id="vkontakte" method="GET" style="margin-left: 500px;margin-right: 500px;margin-top: 15px"
-      th:action="@{/vkAuth}">
-    <button class="btn btn-primary btn-block btn-pull-center" type="submit">
-        Авторизация Вконтакте
-    </button>
-</form>
 
 </body>
 </html>
